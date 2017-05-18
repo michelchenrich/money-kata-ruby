@@ -8,7 +8,9 @@ class Numeric
   end
 
   def absolute
-    positive? ? self : self * -1
+    positive?.
+      if_true { self }.
+      if_false { self * -1 }
   end
 
   def negative

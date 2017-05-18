@@ -1,5 +1,5 @@
 describe Array do
-  context 'sum' do
+  context '#sum' do
     it 'is nil with zero elements' do
       expect([].sum).to be_nil
     end
@@ -10,6 +10,12 @@ describe Array do
 
     it 'adds up the multiple elements' do
       expect([10, 10, 10].sum).to eq 30
+    end
+  end
+
+  context '#push_top' do
+    it 'adds the element to the first position' do
+      expect([1, 2, 3].push_top(4)).to eq [4, 1, 2, 3]
     end
   end
 end

@@ -15,9 +15,9 @@ class Money
   end
 
   def as_currency other_currency
-    currency == other_currency ? 
-      self :
-      Money.new(amount * (currency.get_conversion_rate other_currency), other_currency)
+    (currency == other_currency). 
+      if_true { self }.
+      if_false { Money.new(amount * (currency.get_conversion_rate other_currency), other_currency) }
   end
 
   def == other_money
