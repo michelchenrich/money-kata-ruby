@@ -3,13 +3,13 @@ module Truthy
     block.call
   end
 
-  def if_false &block
+  def if_false &_
     self
   end
 end
 
 module Falsy
-  def if_true &block
+  def if_true &_
     self
   end
 
