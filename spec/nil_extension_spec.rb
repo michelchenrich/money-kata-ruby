@@ -5,4 +5,10 @@ describe NilClass do
       expect(nil.as_currency(dollars)).to eq(dollars.amount(0.0))
     end
   end
+
+  context '#-' do
+    it 'returns the subtracted value' do
+      expect(nil - 10).to eq -10
+    end
+  end
 end

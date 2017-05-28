@@ -18,4 +18,10 @@ describe Array do
       expect([1, 2, 3].push_top(4)).to eq [4, 1, 2, 3]
     end
   end
+
+  context '#average' do
+    it 'is the sum of all elements divided by the count' do
+      expect([1, 2, 3].average).to eq(2)
+    end
+  end
 end

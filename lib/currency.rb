@@ -1,5 +1,6 @@
 class Currency
   exposes :code, :rates
+  also_responds_to message: :to_s, with_method: :code
 
   @instances = Hash.new
 
@@ -13,8 +14,8 @@ class Currency
   end
 
   def put_conversion_rate other_currency, rate
-    self.rates[other_currency.to_s] = rate 
-    other_currency.rates[self.to_s] = 1.0 / rate  
+    rates[other_currency.to_s] = rate 
+    other_currency.rates[to_s] = 1.0 / rate  
   end
 
   def get_conversion_rate other_currency
@@ -23,9 +24,5 @@ class Currency
 
   def amount amount
     Money.new(amount, self)
-  end
-
-  def to_s
-    code
   end
 end

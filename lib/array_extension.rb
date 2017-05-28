@@ -8,4 +8,8 @@ class Array
   def push_top element
     unshift element
   end
+
+  def average
+    sum / count
+  end
 end

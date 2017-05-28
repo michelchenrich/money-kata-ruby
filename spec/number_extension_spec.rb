@@ -31,4 +31,10 @@ describe Numeric do
       expect(10.0.as_currency(dollars)).to eq(dollars.amount(10.0))
     end
   end
+
+  context '#as_number' do
+    it 'returns itself' do
+      expect(10.0.as_number).to eq 10.0
+    end
+  end
 end

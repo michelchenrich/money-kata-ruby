@@ -50,4 +50,16 @@ describe Account do
     account.deposit reals.amount(35.0)
     expect(account.timeline.to_s).to eq("[35.0 BRL, 10.0 USD]")
   end
+
+  it 'knows the average deposit' do
+    account.deposit dollars.amount(10.0)
+    account.deposit dollars.amount(20.0)
+    expect(account.average_deposit).to eq(dollars.amount(15.0))
+  end
+
+  it 'knows the average withdraw' do
+    account.withdraw dollars.amount(10.0)
+    account.withdraw dollars.amount(20.0)
+    expect(account.average_withdraw).to eq(dollars.amount(15.0))
+  end
 end

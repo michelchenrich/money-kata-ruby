@@ -28,6 +28,29 @@ describe Money do
     twenty_dollars = Money.new 20.0, dollars
     expect(ten_dollars + 10.0).to eq(twenty_dollars)
   end
+  
+  it 'can be subtracted' do
+    ten_dollars = Money.new 10.0, dollars
+    twenty_dollars = Money.new 20.0, dollars
+    expect(twenty_dollars - ten_dollars).to eq(ten_dollars)
+  end
+
+  it 'can be multiplied' do
+    ten_dollars = Money.new 10.0, dollars
+    twenty_dollars = Money.new 20.0, dollars
+    expect(ten_dollars * 2).to eq(twenty_dollars)
+  end
+
+  it 'can be divided' do
+    ten_dollars = Money.new 10.0, dollars
+    twenty_dollars = Money.new 20.0, dollars
+    expect(twenty_dollars / 2).to eq(ten_dollars)
+  end
+  
+  it 'returns the amount when asked to be #as_number' do
+    ten_dollars = Money.new 10.0, dollars
+    expect(ten_dollars.as_number).to eq(10.0)
+  end
 
   it 'can be added another money' do
     ten_dollars = Money.new 10.0, dollars
@@ -48,5 +71,13 @@ describe Money do
 
   it 'can be instantiated by converting a number to a currency' do
     expect(10.0.as_currency(dollars)).to eq(Money.new(10.0, dollars))
+  end
+
+  it 'can answer wether it is positive' do
+    expect(10.0.as_currency(dollars).positive?).to be true
+  end
+  
+  it 'can answer wether it is negative' do
+    expect(-10.0.as_currency(dollars).negative?).to be true
   end
 end

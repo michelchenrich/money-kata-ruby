@@ -16,4 +16,8 @@ class Numeric
   def negative
     absolute * -1
   end
+
+  def as_number
+    self
+  end
 end
