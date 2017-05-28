@@ -2,6 +2,5 @@ language: ruby
 rvm:
   - 2.3.0
 script: ./test.sh 
-addons:
-  code_climate:
-    repo_token: 5eb699ce5a56cd3acedf2fd6fd5ec4df5a47d4c5a8f8719ec0be60cb927837cf
+env:
+  CODECLIMATE_REPO_TOKEN: 5eb699ce5a56cd3acedf2fd6fd5ec4df5a47d4c5a8f8719ec0be60cb927837cf
