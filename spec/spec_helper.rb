@@ -4,5 +4,4 @@ SimpleCov.start do
   add_filter '/spec/'
 end
 
-require_relative '../lib/object_extension'
 Dir["#{File.dirname(__FILE__)}/../lib/**/*.rb"].each { |file| require file }

@@ -1,11 +1,25 @@
 class SaleOrder
-  exposes :id, :customer, :currency, :items
-  
   def initialize id, customer, currency
     @id = id
     @customer = customer
     @currency = currency
     @items = []
+  end
+
+  def id
+    @id
+  end
+
+  def customer
+    @customer
+  end
+
+  def currency
+    @currency
+  end
+
+  def items
+    @items
   end
 
   def total

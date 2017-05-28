@@ -1,12 +1,10 @@
 class Account
-  exposes :timeline
-
-  delegates message: :average_deposit, to: :deposits, with_method: :average
-  delegates message: :average_withdraw, to: :withdraws, with_method: :average
-  delegates message: :average_entry, to: :timeline, with_method: :average
-  
   def initialize
     @timeline = Array.new
+  end
+
+  def timeline
+    @timeline
   end
 
   def deposit money
@@ -17,6 +15,10 @@ class Account
     timeline.select { |m| m.positive? }
   end
 
+  def average_deposit
+    deposits.average
+  end
+
   def withdraw money
     timeline.push_top money.negative
   end
@@ -24,8 +26,16 @@ class Account
   def withdraws
     timeline.select { |m| m.negative? }
   end
+  
+  def average_withdraw
+    withdraws.average
+  end
 
   def balance currency
     timeline.sum.as_currency currency 
+  end
+
+  def average_entry
+    timeline.average
   end
 end

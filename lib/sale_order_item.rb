@@ -1,10 +1,16 @@
 class SaleOrderItem
-  exposes :product, :quantity
-
   def initialize product, quantity
     @product = product
     @price = product.price
     @quantity = quantity
+  end
+
+  def product
+    @product
+  end
+
+  def quantity
+    @quantity
   end
 
   def price

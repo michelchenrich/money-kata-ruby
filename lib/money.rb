@@ -1,28 +1,39 @@
 class Money
-  is_composed_of :amount, :currency
+  def initialize amount, currency
+    @amount = amount
+    @currency = currency
+  end
 
-  specializes method: :apply, with_arguments: [':+'], to: :+
-  specializes method: :apply, with_arguments: [':-'], to: :-
-  specializes method: :apply_to_amount, with_arguments: [':*'], to: :*
-  specializes method: :apply_to_amount, with_arguments: [':/'], to: :/
+  def amount
+    @amount
+  end
 
-  delegates message: :positive?, to: :amount
-  delegates message: :negative?, to: :amount
-  delegates message: :get_conversion_rate, to: :currency
-
-  also_responds_to message: :as_number, with_method: :amount
-  also_responds_to message: :inspect, with_method: :to_s
+  def currency
+    @currency
+  end
 
   def negative
     currency.amount(amount.negative)
   end
 
+  def negative?
+    amount.negative?
+  end
+
   def positive
     currency.amount(amount.positive)
+  end
+  
+  def positive?
+    amount.positive?
   end
 
   def as_currency other_currency
     other_currency.amount(amount * get_conversion_rate(other_currency))
+  end
+   
+  def as_number
+    amount
   end
 
   def == other_money
@@ -33,7 +44,31 @@ class Money
     "#{ amount } #{ currency }"
   end
 
+  def inspect
+    to_s 
+  end
+
+  def + other_money
+    apply :+, other_money
+  end
+
+  def - other_money
+    apply :-, other_money
+  end
+
+  def * factor
+    apply_to_amount :*, factor
+  end
+
+  def / factor
+    apply_to_amount :/, factor
+  end
+
   private
+
+  def get_conversion_rate other_currency
+    currency.get_conversion_rate other_currency 
+  end
 
   def apply operation, other_money
     currency.amount(amount.send(operation, convert(other_money).amount))
