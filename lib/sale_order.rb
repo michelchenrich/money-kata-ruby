@@ -1,5 +1,5 @@
 class SaleOrder
-  exposes :id, :customer, :currency
+  exposes :id, :customer, :currency, :items
   
   def initialize id, customer, currency
     @id = id
@@ -9,14 +9,14 @@ class SaleOrder
   end
 
   def total
-    items.map(&:price).sum.as_currency currency
-  end
-
-  def items
-    @items 
+    prices.sum.as_currency currency
   end
 
   def add_item product, quantity=1
-    items << SaleOrderItem.new(product, quantity)
+    items.push SaleOrderItem.new(product, quantity)
+  end
+  
+  def prices
+    items.map(&:price)
   end
 end

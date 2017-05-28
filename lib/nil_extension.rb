@@ -2,12 +2,12 @@ class NilClass
   def as_currency currency
     0.0.as_currency currency
   end
-
-  def - something
-    something.negative
+  
+  def + something
+    something
   end
 
-  def negative
-    self
+  def - something
+    something.negated
   end
 end

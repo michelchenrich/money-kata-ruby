@@ -41,9 +41,10 @@ class Object
   def delegates options
     message = options[:message]
     delegatee = options[:to]
+    method = options[:with_method] || message
     class_eval %Q"
       def #{message.to_s} *arguments
-        #{delegatee.to_s}.#{message.to_s} *arguments
+        #{delegatee.to_s}.#{method.to_s} *arguments
       end
     "
   end

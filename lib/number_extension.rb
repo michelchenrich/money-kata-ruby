@@ -1,10 +1,9 @@
 class Numeric
+  also_responds_to message: :positive, with_method: :absolute
+  also_responds_to message: :as_number, with_method: :itself
+
   def as_currency currency
     Money.new self, currency
-  end
-
-  def positive
-    absolute
   end
 
   def absolute
@@ -17,7 +16,7 @@ class Numeric
     absolute * -1
   end
 
-  def as_number
-    self
+  def negated
+    self * -1
   end
 end

@@ -21,4 +21,3 @@ end
 class Object; include Truthy; end
 class FalseClass; include Falsy; end
 class NilClass; include Falsy; end
-

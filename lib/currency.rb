@@ -11,6 +11,7 @@ class Currency
   def initialize code
     @code = code
     @rates = Hash.new
+    @rates[code] = 1.0
   end
 
   def put_conversion_rate other_currency, rate
@@ -19,7 +20,7 @@ class Currency
   end
 
   def get_conversion_rate other_currency
-    rates[other_currency.to_s] || 1.0
+    rates[other_currency.to_s]
   end
 
   def amount amount

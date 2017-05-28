@@ -9,6 +9,16 @@ describe Numeric do
     end
   end
 
+  context '#negated' do
+    it 'converts itself to negative when positive' do
+      expect(1.negated).to eq -1
+    end
+    
+    it 'converts itself to positive when negative' do
+      expect(-1.negated).to eq 1
+    end
+  end
+
   context '#positive' do
     it 'converts itself to positive' do
       expect(-1.positive).to eq 1

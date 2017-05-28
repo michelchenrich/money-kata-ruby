@@ -36,8 +36,11 @@ class Money
   private
 
   def apply operation, other_money
-    converted_money = other_money.as_currency currency
-    currency.amount(amount.send(operation, converted_money.amount))
+    currency.amount(amount.send(operation, convert(other_money).amount))
+  end
+
+  def convert other_money
+    other_money.as_currency currency
   end
 
   def apply_to_amount operation, other_amount
